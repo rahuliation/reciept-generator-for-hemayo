@@ -1,22 +1,4 @@
 function PrintComp({ printCompRef, values }) {
-  const products = [
-    {
-      name:
-        'Hada Labo Gokujyun | Foaming Cleanser | Hyaluronic Acid Moisture Bubble',
-      price: 2222,
-      quantity: 1,
-    },
-    {
-      name: 'Hada Labo Gokujyun Pore Cleaning Adlay Foaming Face Wash',
-      price: 1800,
-      quantity: 3,
-    },
-    {
-      name: 'Kose Softymo Deep Cleansing Oil',
-      price: 1200,
-      quantity: 2,
-    },
-  ]
   return (
     <div ref={printCompRef}>
       <style>
@@ -47,6 +29,16 @@ function PrintComp({ printCompRef, values }) {
         <center>
           <div
             style={{
+              width: '100%',
+              fontWeight: '900',
+              display: 'block',
+              marginLeft: 0,
+            }}
+          >
+            <h2>ID: {values.deliveryId}</h2>
+          </div>
+          <div
+            style={{
               background: `url(${window.location.origin}/logo-black.png) no-repeat`,
               height: '100px',
               width: '80%',
@@ -68,38 +60,33 @@ function PrintComp({ printCompRef, values }) {
 
         <div>
           <div styl>
-            <h2 style={{ fontSize: '1.4em', fontWeight: '800' }}>
-              Deliver To{' '}
-            </h2>
+            <h2 style={{ fontSize: '1.4em', fontWeight: '800' }}>Deliver To</h2>
             <p style={{}}>
-              <span style={{ fontWeight: '500', fontSize: '0.7em' }}>
-                {' '}
-                Name :{' '}
+              <span style={{ fontWeight: '500', fontSize: '0.8em' }}>
+                Name :
               </span>
-              <span style={{ fontWeight: '800', fontSize: '0.8em' }}>
-                {values.name}{' '}
+              <span style={{ fontWeight: '800', fontSize: '1em' }}>
+                {values.name}
               </span>
               <br />
-              <span style={{ fontWeight: '500', fontSize: '0.7em' }}>
-                {' '}
-                Address :{' '}
+              <span style={{ fontWeight: '500', fontSize: '0.8em' }}>
+                Address :
               </span>
-              <span style={{ fontWeight: '800', fontSize: '0.8em' }}>
+              <span style={{ fontWeight: '800', fontSize: '1em' }}>
                 {values.address}
               </span>
               <br />
-              <span style={{ fontWeight: '500', fontSize: '0.7em' }}>
-                {' '}
-                Email :{' '}
+              <span style={{ fontWeight: '500', fontSize: '0.8em' }}>
+                Email :
               </span>
-              <span style={{ fontWeight: '800', fontSize: '0.8em' }}>
+              <span style={{ fontWeight: '800', fontSize: '1em' }}>
                 {values.email}
               </span>
               <br />
-              <span style={{ fontWeight: '500', fontSize: '0.7em' }}>
-                Mobile :{' '}
+              <span style={{ fontWeight: '500', fontSize: '0.8em' }}>
+                Mobile :
               </span>
-              <span style={{ fontWeight: '800', fontSize: '0.8em' }}>
+              <span style={{ fontWeight: '800', fontSize: '1em' }}>
                 {values.mobile}
               </span>
               <br />
@@ -116,10 +103,10 @@ function PrintComp({ printCompRef, values }) {
               borderBottom: '1px solid #808080',
             }}
           >
-            <td style={{ width: '80%' }}>
+            <td style={{ width: '75%' }}>
               <h2>Item</h2>
             </td>
-            <td style={{ textAlign: 'right', width: '5%' }}>
+            <td style={{ textAlign: 'center', width: '10%' }}>
               <h2>Qty</h2>
             </td>
             <td style={{ textAlign: 'right', width: '15%' }}>
@@ -147,19 +134,32 @@ function PrintComp({ printCompRef, values }) {
             </tr>
           ))}
 
-          <tr>
-            <td style={{ textAlign: 'right', paddingRight: '2mm' }} colSpan={2}>
+          <tr style={{ textAlign: 'right', fontSize: '0.9em' }}>
+            <td style={{ paddingRight: '2mm' }} colSpan={2}>
+              <h2>Discount</h2>
+            </td>
+            <td>
+              <h2>
+                {values.discount}
+              </h2>
+            </td>
+          </tr>
+
+          <tr style={{ textAlign: 'right', fontSize: '0.9em' }}>
+            <td style={{ paddingRight: '2mm' }} colSpan={2}>
               <h2>Total</h2>
             </td>
             <td>
-              <h2>{products.reduce((s, p) => p.quantity * p.price + s, 0)}</h2>
+              <h2>
+                {values.products.reduce((s, p) => p.quantity * p.price + s, 0) - values.discount}
+              </h2>
             </td>
           </tr>
         </table>
 
         <div style={{ textAlign: 'center' }}>Thank you</div>
         <br />
-        <br />
+        <hr />
       </div>
     </div>
   )

@@ -13,6 +13,7 @@ const init = {
   address: '',
   email: '',
   products: [emptyProduct],
+  discount: 0,
 }
 
 function App() {
@@ -72,6 +73,23 @@ function App() {
   return (
     <div className="flex flex-col md:flex-row w-100 p-8">
       <div className="flex flex-col w-full p-8">
+        <h2 className="text-center pt-2 font-bold">Delivery ID</h2>
+        <div class=" relative mt-4 ">
+          <label for="name-with-label" class="text-gray-700">
+            Delivery Id
+          </label>
+          <input
+            value={values.deliveryId}
+            onChange={(e) => setInput('deliveryId', e.target.value)}
+            type="text"
+            id="name-with-label"
+            class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            name="text"
+            placeholder="Delivery ID"
+          />
+        </div>
+        <h2 className="text-center pt-2 font-bold">Customer Details</h2>
+
         <div class=" relative mt-4 ">
           <label for="name-with-label" class="text-gray-700">
             Name
@@ -114,7 +132,6 @@ function App() {
             placeholder="email"
           />
         </div>
-
         <div class=" relative mt-4">
           <label for="mobile-with-label" class="text-gray-700">
             Mobile
@@ -129,8 +146,10 @@ function App() {
             placeholder="Mobile"
           />
         </div>
+        <h2 className="text-center pt-2 font-bold">Product</h2>
+
         {(values.products ?? []).map((p, i) => (
-          <div className="flex w-full py-8">
+          <div className="flex flex-col md:flex-row w-full py-8 items-center">
             <div class=" relative w-full md:w-3/5 px-2">
               <label for="product-with-label" class="text-gray-700">
                 Product Name
@@ -177,7 +196,7 @@ function App() {
               <button
                 onClick={() => onRemove(i)}
                 type="button"
-                class="py-2 mr-6 px-4 mt-8 bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                class="py-2 mr-6 px-4 mt-8 text-red-600 text-center "
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -197,8 +216,21 @@ function App() {
             </div>
           </div>
         ))}
-
-        <div className="w-full">
+        <div class=" relative w-full px-2">
+          <label for="discount-with-label" class="text-gray-700">
+            Discount
+          </label>
+          <input
+            value={values.discount}
+            onChange={(e) => setInput('discount', e.target.value)}
+            type="number"
+            id="price-with-label"
+            class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            name="price"
+            placeholder="Discount"
+          />
+        </div>
+        <div className="w-full mt-20">
           <button
             onClick={() => {
               setValues(init)
