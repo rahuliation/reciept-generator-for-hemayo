@@ -2,7 +2,7 @@ function PrintComp({ printCompRef, values }) {
   const subTotal = values.products.reduce(
     (s, p) => parseFloat(p.quantity) * parseFloat(p.price) + s,
     0,
-  );
+  )
   return (
     <div ref={printCompRef}>
       <style>
@@ -30,7 +30,9 @@ function PrintComp({ printCompRef, values }) {
           fontFamily: 'printFont',
         }}
       >
-        <center>
+        <hr />
+
+        <center style={{ paddingTop: '20px' }}>
           <div
             style={{
               width: '100%',
@@ -67,28 +69,28 @@ function PrintComp({ printCompRef, values }) {
             <h2 style={{ fontSize: '1.4em', fontWeight: '800' }}>Deliver To</h2>
             <p style={{}}>
               <span style={{ fontWeight: '500', fontSize: '0.8em' }}>
-                Name :
+                Name :{' '}
               </span>
               <span style={{ fontWeight: '800', fontSize: '1em' }}>
                 {values.name}
               </span>
               <br />
               <span style={{ fontWeight: '500', fontSize: '0.8em' }}>
-                Address :
+                Address :{' '}
               </span>
               <span style={{ fontWeight: '800', fontSize: '1em' }}>
                 {values.address}
               </span>
               <br />
               <span style={{ fontWeight: '500', fontSize: '0.8em' }}>
-                Email :
+                Email :{' '}
               </span>
               <span style={{ fontWeight: '800', fontSize: '1em' }}>
                 {values.email}
               </span>
               <br />
               <span style={{ fontWeight: '500', fontSize: '0.8em' }}>
-                Mobile :
+                Mobile :{' '}
               </span>
               <span style={{ fontWeight: '800', fontSize: '1em' }}>
                 {values.mobile}
@@ -137,7 +139,7 @@ function PrintComp({ printCompRef, values }) {
               </td>
             </tr>
           ))}
-          
+
           <tr style={{ textAlign: 'right', fontSize: '0.8em' }}>
             <td style={{ paddingRight: '2mm' }} colSpan={2}>
               <h2>Sub Total</h2>
@@ -156,8 +158,6 @@ function PrintComp({ printCompRef, values }) {
             </td>
           </tr>
 
-
-
           <tr style={{ textAlign: 'right', fontSize: '0.8em' }}>
             <td style={{ paddingRight: '2mm' }} colSpan={2}>
               <h2>Delivery Charge</h2>
@@ -173,7 +173,7 @@ function PrintComp({ printCompRef, values }) {
             </td>
             <td>
               <h2>
-                { subTotal -
+                {subTotal -
                   parseFloat(values.discount) +
                   parseFloat(values.deliveryCharge)}
               </h2>
