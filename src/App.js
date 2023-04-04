@@ -14,6 +14,7 @@ const init = {
   email: '',
   products: [emptyProduct],
   discount: 0,
+  deliveryCharge: 0,
 }
 
 function App() {
@@ -193,30 +194,46 @@ function App() {
               />
             </div>
             <div>
-              <button
-                onClick={() => onRemove(i)}
-                type="button"
-                class="py-2 mr-6 px-4 mt-8 text-red-600 text-center "
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-6 h-6"
+              {values.products.length > 1 && (
+                <button
+                  onClick={() => onRemove(i)}
+                  type="button"
+                  class="py-2 mr-6 px-4 mt-8 text-red-600 text-center "
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              )}
             </div>
           </div>
         ))}
-        <div class=" relative w-full px-2">
+        <div class=" relative w-full px-2 mt-2">
+          <label for="discount-with-label" class="text-gray-700">
+            Delivery Charge
+          </label>
+          <input
+            value={values.deliveryCharge}
+            onChange={(e) => setInput('deliveryCharge', e.target.value)}
+            type="number"
+            id="price-with-label"
+            class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            name="price"
+            placeholder="Delivery Charge"
+          />
+        </div>
+        <div class=" relative w-full px-2 mt-2">
           <label for="discount-with-label" class="text-gray-700">
             Discount
           </label>
